@@ -1,0 +1,115 @@
+<!-- Container with responsive padding and dark mode support -->
+<div class="w-screen sm:p-12 p-4 bg-white dark:bg-gray-900">
+  <div>
+    <input
+      type="text"
+      class="w-full border border-neutral-300 dark:border-neutral-600 rounded-md px-4 py-2 bg-white dark:bg-gray-700 text-black dark:text-gray-200"
+      [(ngModel)]="ipAddress"
+      placeholder="Enter IP address"
+    />
+    <div>
+      <p *ngIf="validationError" class="text-red-500 dark:text-red-400">
+        {{ validationError }}
+      </p>
+    </div>
+  </div>
+  <button
+    class="bg-black dark:bg-gray-800 px-4 py-2 rounded-md text-white dark:text-gray-300 w-full md:w-44 mt-3"
+    (click)="lookupIp()"
+  >
+    Lookup IP
+  </button>
+</div>
+
+<div
+  class="w-screen flex justify-center items-center bg-white dark:bg-gray-900 text-black dark:text-gray-300 px-8"
+  *ngIf="!ipDetails"
+>
+  <p class="h-6 w-fit p-5 bg-neutral-100 border border-black dark:text-gray-100 dark:bg-gray-500 flex  justify-center items-center rounded-sm">ip Data will be shown here</p>
+</div>
+<div
+  class="min-h-screen w-screen p-6 bg-white dark:bg-gray-900 text-black dark:text-gray-300"
+>
+  <!-- Main container for IP details with dark mode support -->
+  <div *ngIf="ipDetails">
+    <!-- Main grid layout: 2 columns on larger screens, single column on smaller screens -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Info Cards Container: spans 2 columns on large screens, 1 column on small screens -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:col-span-2 gap-4">
+        <!-- IP Address -->
+        <div
+          class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+        >
+          <p class="text-xl font-bold">
+            IP:<br />
+            {{ ipDetails?.ip }}
+          </p>
+        </div>
+        <!-- Route -->
+        <div
+          class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+        >
+          <p class="text-xl font-bold">
+            Route:<br />
+            {{ ipDetails?.as?.route }}
+          </p>
+        </div>
+        <!-- Country -->
+        <div
+          class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+        >
+          <p class="text-xl font-bold">
+            Country:<br />
+            {{ ipDetails?.location?.country }}
+          </p>
+        </div>
+        <!-- Domain -->
+        <div
+          class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+        >
+          <p class="text-xl font-bold">
+            Domain:<br />
+            {{ ipDetails?.as?.domain }}
+          </p>
+        </div>
+        <!-- ASN -->
+        <div
+          class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+        >
+          <p class="text-xl font-bold">
+            ASN:<br />
+            {{ ipDetails?.as?.asn }}
+          </p>
+        </div>
+        <!-- Type -->
+        <div
+          class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+        >
+          <p class="text-xl font-bold">
+            Type:<br />
+            {{ ipDetails?.as?.type }}
+          </p>
+        </div>
+        <!-- Timezone -->
+        <div
+          class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+        >
+          <p class="text-xl font-bold">
+            Timezone:<br />
+            {{ ipDetails.location?.timezone }}
+          </p>
+        </div>
+        <!-- ISP -->
+        <div
+          class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+        >
+          <p class="text-xl font-bold">
+            ISP:<br />
+            {{ ipDetails?.isp }}
+          </p>
+        </div>
+      </div>
+      <!-- Map Container: occupies 1 column on larger screens, full width on small screens -->
+    </div>
+  </div>
+</div>

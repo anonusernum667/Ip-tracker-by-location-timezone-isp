@@ -1,0 +1,99 @@
+<div class="bg-white dark:bg-gray-900 w-screen ">
+<div class="md:w-screen p-6"><div
+  class=" p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm w-full md:w-6/12 flex justify-start px-5"
+>
+  <p class="text-xl font-bold text-black dark:text-white">
+    your ip is : <br>
+    {{ip?.ip}}
+  </p>
+</div></div>
+
+<div
+class="min-h-screen w-screen p-6 bg-white dark:bg-gray-900 text-black dark:text-gray-300"
+>
+<!-- Main container for IP details with dark mode support -->
+<div *ngIf="ipinfo">
+<!-- Main grid layout: 2 columns on larger screens, single column on smaller screens -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Info Cards Container: spans 2 columns on large screens, 1 column on small screens -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:col-span-2 gap-4">
+<!-- IP Address -->
+<div
+  class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+>
+  <p class="text-xl font-bold">
+    IP:<br />
+    {{ ipinfo?.ip }}
+  </p>
+</div>
+<!-- Route -->
+<div
+  class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+>
+  <p class="text-xl font-bold">
+    Route:<br />
+    {{ ipinfo?.as?.route }}
+  </p>
+</div>
+<!-- Country -->
+<div
+  class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+>
+  <p class="text-xl font-bold">
+    Country:<br />
+    {{ ipinfo?.location?.country }}
+  </p>
+</div>
+<!-- Domain -->
+<div
+  class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+>
+  <p class="text-xl font-bold">
+    Domain:<br />
+    {{ ipinfo?.as?.domain }}
+  </p>
+</div>
+<!-- ASN -->
+<div
+  class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+>
+  <p class="text-xl font-bold">
+    ASN:<br />
+    {{ ipinfo?.as?.asn }}
+  </p>
+</div>
+<!-- Type -->
+<div
+  class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+>
+  <p class="text-xl font-bold">
+    Type:<br />
+    {{ ipinfo?.as?.type }}
+  </p>
+</div>
+<!-- Timezone -->
+<div
+  class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+>
+  <p class="text-xl font-bold">
+    Timezone:<br />
+    {{ ipinfo.location?.timezone }}
+  </p>
+</div>
+<!-- ISP -->
+<div
+  class="rct p-4 bg-neutral-300 dark:bg-neutral-700 rounded-md shadow-sm"
+>
+  <p class="text-xl font-bold">
+    ISP:<br />
+    {{ ipinfo?.isp }}
+  </p>
+</div>
+</div>
+<!-- Map Container: occupies 1 column on larger screens, full width on small screens -->
+</div>
+</div>
+</div>
+
+
+</div>
